@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "private": true,
   "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yaojianpin/svg-icon.git"
+  },
   "dependencies": {
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
