@@ -1,8 +1,9 @@
 {
-  "name": "svg-icon",
-  "version": "1.0.0",
-  "private": true,
+  "name": "svg-icon-file",
+  "version": "0.1.0",
+  "private": false,
   "main": "dist/index.js",
+  "keywords": ["react", "svg", "icon"],
   "repository": {
     "type": "git",
     "url": "https://github.com/yaojianpin/svg-icon.git"

@@ -1,63 +1,45 @@
 import * as React from 'react'
-import './index.less';
+import './style.less';
 
-interface SvgIconProps {
-    name: string;
+export interface SvgIconFileProps {
+    icon: JSX.Element;
     size?: string;
+    iconClassName?: string;
+    textClassName?: string;
     tag?: JSX.Element | boolean ;
-    group?: string;
     disabled?: boolean;
     direction?: 'column' | 'row'
 }
-class SvgIcon extends React.Component<SvgIconProps & React.HTMLAttributes<any>, {}> {
+
+class SvgIconFile extends React.Component<SvgIconFileProps & React.HTMLAttributes<any>, {}> {
     static defaultProps = { size: 'md', direction: 'row', disabled: false }
-    static dir = './svg';
     render() {
         const {
-            name,
+            icon,
             size,
             tag,
             direction,
             disabled,
-            group,
+            iconClassName,
+            textClassName,
             children,
-            onClick,
             ...restProps
         } = this.props;
 
-        this.renderSvg(name, group, SvgIcon.dir);
+        // className for text part
+        const textClass = textClassName ? textClassName : `svg-icon-text-${size}`;
+        const iconClass = iconClassName ? iconClassName : `svg-icon svg-icon-${size}`;
 
         return (
             <div className="svg-icon-root">
                 <div className={ `${disabled ? 'disabled' : ''}`} style={{ display: 'flex', flexDirection: direction, alignItems: 'center', position: 'relative' }} >
-                    <div onClick={onClick} >
-                        <svg  {...restProps} className={` svg-icon svg-icon-${name} svg-icon-${size}`  }  >
-                            <use xlinkHref={`#${name}`} />
-                        </svg>
+                    <div {...restProps} className={ iconClass } >
+                        { icon }
                         { tag && <div className="tag"> { tag } </div> }
                     </div>
-                    {children && <div className={`svg-icon-text-${size} ${direction}`} >{children}</div>}
+                    {children && <div className={`${textClass} ${direction}`} >{children}</div>}
                 </div>
             </div>);
     }
-
-    renderSvg(name: string, group?: string, dir?: string, ) {
-        let svg;
-        let path = dir || './svg';
-        try {
-            if(group) {
-                svg = require(`${path}/${group}/${name}.svg`);
-            }
-            else {
-                svg = require(`${path}/${name}.svg`);
-            }
-        } 
-        catch (e) { 
-            console.log(e);
-        }
-        finally {
-            return svg;
-        }
-    }
 }
-export default SvgIcon;
+export default SvgIconFile;
