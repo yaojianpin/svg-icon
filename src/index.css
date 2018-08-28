@@ -1,0 +1,43 @@
+.svg-icon-root .disabled {
+  color: lightgray;
+}
+.svg-icon-root .svg-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  position: relative;
+  pointer-events: none;
+}
+.svg-icon-root .svg-icon .svg-icon-icon {
+  position: relative;
+}
+.svg-icon-root .svg-icon .tag {
+  position: absolute;
+  right: -5px;
+  top: -5px;
+  background: red;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 1rem;
+  font-size: 0.8rem;
+  text-align: center;
+  padding: 0.1rem;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+path {
+  fill: currentColor;
+}
+.icon {
+  /* 通过设置 font-size 来改变图标大小 */
+  width: 1em;
+  height: 1em;
+  /* 图标和文字相邻时，垂直对齐 */
+  vertical-align: -0.15em;
+  /* 通过设置 color 来改变 SVG 的颜色/fill */
+  fill: currentColor;
+  /* path 和 stroke 溢出 viewBox 部分在 IE 下会显示
+     normalize.css 中也包含这行 */
+  overflow: hidden;
+}

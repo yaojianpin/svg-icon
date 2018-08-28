@@ -1,0 +1,111 @@
+@svg-icon-size-lg: 3rem;
+@svg-icon-size-md: 2rem;
+@svg-icon-size-sm: 1.2rem;
+@svg-icon-size-xs: 1rem;
+@svg-icon-size-xxs: 0.65rem;
+
+@icon-sizes: 
+lg  @svg-icon-size-lg,
+md  @svg-icon-size-md,
+sm  @svg-icon-size-sm,
+xs  @svg-icon-size-xs,
+xxs @svg-icon-size-xxs;
+
+@text-row-sizes: 
+    lg  0.8rem,
+    md  0.8rem,
+    sm  0.65rem,
+    xs  0.5rem,
+    xxs 0.35rem;
+
+@text-column-sizes: 
+    lg  0.8rem,
+    md  0.8rem,
+    sm  0.65rem,
+    xs  0.5rem,
+    xxs 0.35rem;
+
+.svg-icon-root {
+    .disabled {
+        color: lightgray;
+    }
+    .svg-icon
+    {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        position: relative;
+        pointer-events: none;
+        .svg-icon-icon
+        {
+            position: relative;
+        }
+
+        .tag {
+            position: absolute;
+            right: -5px;
+            top: -5px;
+            background: red;
+            width: 1rem;
+            height: 1rem;
+            border-radius: 1rem;
+            font-size: 0.8rem;
+            text-align: center;
+            padding: 0.1rem;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        
+        .for-each(@pair in @icon-sizes) {
+            @key: at(@pair, 1);
+            @value: at(@pair, 2);
+            &.svg-icon-@{key} {
+                width: @value;
+                height: @value;
+            }
+        }
+
+    }
+
+    .for-each(@pair in @text-row-sizes) {
+        @key: at(@pair, 1);
+        .svg-icon-text-@{key} {
+            &.row {
+                font-size: at(@pair, 2) * 1.6;
+                margin-left: 0.1rem;
+            }
+        }
+    }
+
+    .for-each(@pair in @text-column-sizes) {
+        @key: at(@pair, 1);
+        .svg-icon-text-@{key} {
+            
+            &.column {
+                font-size: at(@pair, 2);
+                margin-top: 0.1rem;
+            }
+        }
+    }
+
+}
+
+
+path
+{
+    fill: currentColor;
+}
+
+.icon
+{
+      /* 通过设置 font-size 来改变图标大小 */
+  width: 1em; height: 1em;
+  /* 图标和文字相邻时，垂直对齐 */
+  vertical-align: -0.15em;
+  /* 通过设置 color 来改变 SVG 的颜色/fill */
+  fill: currentColor;
+  /* path 和 stroke 溢出 viewBox 部分在 IE 下会显示
+     normalize.css 中也包含这行 */
+  overflow: hidden;
+}
