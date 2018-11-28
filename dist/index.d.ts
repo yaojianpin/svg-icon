@@ -1,14 +1,14 @@
 /// <reference types="react" />
-import * as React from 'react';
-import './style.less';
+import * as React from "react";
+import "./style.less";
 export interface SvgIconFileProps {
-    icon: JSX.Element;
+    icon: any;
     size?: string;
     iconClassName?: string;
     textClassName?: string;
     tag?: JSX.Element | boolean;
     disabled?: boolean;
-    direction?: 'column' | 'row';
+    direction?: "column" | "row";
 }
 declare class SvgIconFile extends React.Component<SvgIconFileProps & React.HTMLAttributes<any>, {}> {
     static defaultProps: {
