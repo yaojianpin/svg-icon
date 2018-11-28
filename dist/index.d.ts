@@ -4,6 +4,7 @@ import "./style.less";
 export interface SvgIconFileProps {
     icon: any;
     size?: string;
+    inline?: boolean;
     iconClassName?: string;
     textClassName?: string;
     tag?: JSX.Element | boolean;
@@ -15,6 +16,7 @@ declare class SvgIconFile extends React.Component<SvgIconFileProps & React.HTMLA
         size: string;
         direction: string;
         disabled: boolean;
+        inline: boolean;
     };
     render(): JSX.Element;
 }

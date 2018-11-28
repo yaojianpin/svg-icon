@@ -4,6 +4,7 @@ import "./style.less";
 export interface SvgIconFileProps {
   icon: any;
   size?: string;
+  inline?: boolean;
   iconClassName?: string;
   textClassName?: string;
   tag?: JSX.Element | boolean;
@@ -15,11 +16,12 @@ class SvgIconFile extends React.Component<
   SvgIconFileProps & React.HTMLAttributes<any>,
   {}
 > {
-  static defaultProps = { size: "md", direction: "row", disabled: false };
+  static defaultProps = { size: "md", direction: "row", disabled: false, inline: true };
   render() {
     const {
       icon,
       size,
+      inline,
       tag,
       direction,
       disabled,
@@ -36,7 +38,7 @@ class SvgIconFile extends React.Component<
       : `svg-icon svg-icon-${size}`;
 
     return (
-      <div className="svg-icon-root">
+      <div className={`svg-icon-root ${ inline ? 'inline' :'' }`}>
         <div
           className={`${disabled ? "disabled" : ""}`}
           style={{
